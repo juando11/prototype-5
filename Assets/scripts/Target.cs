@@ -10,6 +10,7 @@ public class Target : MonoBehaviour
      private float maxTorque = 10;
      private float xRange = 4;
      private float ySpawnPos = -6;
+     private GameManager gameManager;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,6 +19,7 @@ public class Target : MonoBehaviour
      targetRb.AddForce( RandomFormce(), ForceMode.Impulse);
      targetRb.AddTorque(RandonTorque(), RandonTorque(), RandonTorque(), ForceMode.Impulse);
      transform.position = RandomSpawnPos();
+     gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
     // Update is called once per frame
@@ -41,7 +43,7 @@ public class Target : MonoBehaviour
       return new Vector3(Random.Range(-xRange, xRange), ySpawnPos); 
     }
      
-     private void OnMouseDowm()
+     private void OnMouseDown()
      {
       Destroy(gameObject);
      }
